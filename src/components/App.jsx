@@ -10,11 +10,6 @@ export const App = () => {
   const [contacts, setContacts] = useLocalStorage('contacts', []);
   const [filter, setFilter] = useState('');
 
-  const handleChange = e => {
-    const { filter } = e.target.value;
-    setFilter(filter);
-  };
-
   const handleSubmit = ({ name, number }) => {
     const id = nanoid();
     const contactsLists = [...contacts];
@@ -34,6 +29,11 @@ export const App = () => {
     });
 
     return filterContactsList;
+  };
+
+  const handleChange = e => {
+    const filter = e.target.value;
+    setFilter(filter);
   };
 
   const handleDelete = elementDeleteId => {
